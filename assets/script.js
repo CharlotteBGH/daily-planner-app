@@ -1,7 +1,7 @@
 // DOM elements to link to JQuery
 var displayDateHeader = $("#currentDay");
 var plannerEntry = $(".timeBlock");
-var timeBlocksSection = $("#timeBlocks");
+var timeBlocksSection = $(".timeBlocks");
 var timeNow = moment().hours();
 var savedEntry = $(".saveBtn");
 
