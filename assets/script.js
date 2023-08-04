@@ -1,6 +1,6 @@
 // DOM elements to link to JQuery
 var displayDateHeader = $("#currentDay");
-var fabulousDay = $(".timeBlock");
+var plannerEntry = $(".timeBlock");
 var timeBlocksSection = $("#timeBlocks");
 var timeNow = moment().hours();
 var savedEntry = $(".saveBtn");
@@ -14,7 +14,7 @@ function displayDate() {
 displayDate();
 // Save all of the planner entries to local storage
 function savePlannerEntries() {
-  localStorage.setItem("fabulousDay", JSON.stringify(fabulousDay));
+  localStorage.setItem("plannerEntry", JSON.stringify(plannerEntry));
 }
 //Need to prevent default clearing of the form when the save button is clicked.
 function protectedSavedEntry(event) {
@@ -23,22 +23,22 @@ function protectedSavedEntry(event) {
 //Confirmation message if saved?
 
 // How does it know if the time is present, past or future?
-for (var i = 0; i < fabulousDay.length; i++) {
-  if (fabulousDay[i].dataset.time < timeNow) {
-    fabulousDay[i].classList.remove("future");
-    fabulousDay[i].classList.remove("present");
-    fabulousDay[i].classList.add("past");
+for (var i = 0; i < plannerEntry.length; i++) {
+  if (plannerEntry[i].dataset.time < timeNow) {
+    plannerEntry[i].classList.remove("future");
+    plannerEntry[i].classList.remove("present");
+    plannerEntry[i].classList.add("past");
   }
 
-  if (fabulousDay[i].dataset.time == timeNow) {
-    fabulousDay[i].classList.remove("past");
-    fabulousDay[i].classList.remove("future");
-    fabulousDay[i].classList.add("present");
+  if (plannerEntry[i].dataset.time == timeNow) {
+    plannerEntry[i].classList.remove("past");
+    plannerEntry[i].classList.remove("future");
+    plannerEntry[i].classList.add("present");
   }
-  if (fabulousDay[i].dataset.time > timeNow) {
-    fabulousDay[i].classList.remove("past");
-    fabulousDay[i].classList.remove("present");
-    fabulousDay[i].classList.add("future");
+  if (plannerEntry[i].dataset.time > timeNow) {
+    plannerEntry[i].classList.remove("past");
+    plannerEntry[i].classList.remove("present");
+    plannerEntry[i].classList.add("future");
   }
 }
 // ***** DON'T FORGET TO CALL FUNCTIONS!!!!*******
