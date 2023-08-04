@@ -22,11 +22,12 @@ header {
   padding: 60px;
 }
 
-.description {
+.eventEntry {
   white-space: pre-wrap;
+  background-color: #ffff;
 }
 
-.time-block {
+.timeBlocks {
   text-align: center;
   border-radius: 15px;
 }
@@ -38,9 +39,11 @@ header {
 }
 
 .hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+  background-color: #cb99c7;
+  color: #ffff;
+  border-top: 3px dashed #000000;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .past {
@@ -59,7 +62,6 @@ header {
 }
 
 .saveBtn {
-  border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
   background-color: #cb99c7;

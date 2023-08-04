@@ -1,58 +1,9 @@
-// Set up day array to loop through
-//Might have to create div elements in the HTML instead 
-var fabulousDay = [
-  {
-    hour: "08",
-    amorpm: "am",
-    entry: "",
-  },
-  {
-    hour: "09",
-    amorpm: "am",
-    entry: "",
-  },
-  {
-    hour: "10",
-    amorpm: "am",
-    entry: "",
-  },
-  {
-    hour: "11",
-    amorpm: "am",
-    entry: "",
-  },
-  {
-    hour: "12",
-    amorpm: "pm",
-    entry: "",
-  },
-  {
-    hour: "1",
-    amorpm: "pm",
-    entry: "",
-  },
-  {
-    hour: "2",
-    amorpm: "pm",
-    entry: "",
-  },
-  {
-    hour: "3",
-    amorpm: "pm",
-    entry: "",
-  },
-
-  {
-    hour: "4",
-    amorpm: "pm",
-    entry: "",
-  },
-];
-
 // DOM elements to link to JQuery
 var displayDateHeader = $("#currentDay");
-var timeBlocksSection = $(.timeBlock);
+var fabulousDay = $(".timeBlock");
+var timeBlocksSection = $("#timeBlocks");
 var timeNow = moment().hours();
+var savedEntry = $(".saveBtn");
 
 // Display the current date
 function displayDate() {
@@ -60,39 +11,36 @@ function displayDate() {
   displayDateHeader.text(todayDate);
 }
 
-// Create the rows with the times and save icons for the planner entries
-var selectedHour = $("<form>").attr;
-$("timeBlocks").append(selectedHour);
-
 displayDate();
 // Save all of the planner entries to local storage
 function savePlannerEntries() {
   localStorage.setItem("fabulousDay", JSON.stringify(fabulousDay));
 }
+//Need to prevent default clearing of the form when the save button is clicked.
+function protectedSavedEntry(event) {
+  event.preventDefault();
+}
+//Confirmation message if saved?
 
 // How does it know if the time is present, past or future?
-for (var i = 0; i < timeblock.length i++) {
-  if (timeBlocksSection[i].dataset.time < timeNow) {
-    timeBlocksSection[i].classList.remove("future");
-    timeBlocksSection[i].classList.remove("present");
-    timeBlocksSection[i].classList.add("past");
-  };
-
-  if (timeBlocksSection[i].dataset.time == timeNow) {
-    timeBlocksSection[i].classList.remove("past");
-    timeBlocksSection[i].classList.remove("future");
-    timeBlocksSection[i].classList.add("present");
-  };
-  if (timeBlocksSection[i].dataset.time > timeNow) {
-    timeBlocksSection[i].classList.remove("past");
-    timeBlocksSection[i].classList.remove("present");
-    timeBlocksSection[i].classList.add("future");
+for (var i = 0; i < fabulousDay.length; i++) {
+  if (fabulousDay[i].dataset.time < timeNow) {
+    fabulousDay[i].classList.remove("future");
+    fabulousDay[i].classList.remove("present");
+    fabulousDay[i].classList.add("past");
   }
-  };
-  
-// Present planner entries to the user
-function displayPlannerEntries() {}
 
+  if (fabulousDay[i].dataset.time == timeNow) {
+    fabulousDay[i].classList.remove("past");
+    fabulousDay[i].classList.remove("future");
+    fabulousDay[i].classList.add("present");
+  }
+  if (fabulousDay[i].dataset.time > timeNow) {
+    fabulousDay[i].classList.remove("past");
+    fabulousDay[i].classList.remove("present");
+    fabulousDay[i].classList.add("future");
+  }
+}
 // ***** DON'T FORGET TO CALL FUNCTIONS!!!!*******
-// savePlannerEntries();
-// displayPlannerEntries();
+savePlannerEntries();
+savedEntry.on("click", ".saveBtn", savePlannerEntries);
