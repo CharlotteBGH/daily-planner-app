@@ -10,19 +10,20 @@ function displayDate() {
   var todayDate = dayjs().format("dddd D MMMM YYYY");
   displayDateHeader.text(todayDate);
 }
-
 displayDate();
-// Save all of the planner entries to local storage
+//Add an event listener for the button
+//savedEntry.on("click", ".saveBtn", savePlannerEntries);
+//console.log("button clicked!");
+// Save all of the planner entries to local storage when the save button is clicked
 function savePlannerEntries() {
   localStorage.setItem("plannerEntry", JSON.stringify(plannerEntry));
 }
 //Need to prevent default clearing of the form when the save button is clicked.
-function protectedSavedEntry(event) {
-  event.preventDefault();
-}
-//Confirmation message if saved?
+//function protectSavedEntry(event) {
+//event.preventDefault();
+//}
 
-// How does it know if the time is present, past or future?
+// Make it loop through the time divs variable to check whether the listed times are in the past, present of future
 for (var i = 0; i < plannerEntry.length; i++) {
   if (plannerEntry[i].dataset.time < timeNow) {
     plannerEntry[i].classList.remove("future");
@@ -43,4 +44,4 @@ for (var i = 0; i < plannerEntry.length; i++) {
 }
 // ***** DON'T FORGET TO CALL FUNCTIONS!!!!*******
 savePlannerEntries();
-savedEntry.on("click", ".saveBtn", savePlannerEntries);
+//protectSavedEntry();
