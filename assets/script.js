@@ -1,9 +1,10 @@
 // DOM elements to link to JQuery
 var displayDateHeader = $("#currentDay");
-var plannerEntry = $(".timeBlock");
+var timeSegment = $(".timeBlock");
+var plannerEntry = $(".eventEntry");
 var timeBlocksSection = $(".timeBlocks");
 var timeNow = moment().hours();
-var savedEntry = $(".saveBtn");
+var buttonClicked = $(".saveBtn");
 
 // Display the current date
 function displayDate() {
@@ -12,7 +13,7 @@ function displayDate() {
 }
 displayDate();
 //Add an event listener for the button
-//savedEntry.on("click", ".saveBtn", savePlannerEntries);
+plannerEntry.on("click", ".saveBtn", savePlannerEntries);
 //console.log("button clicked!");
 // Save all of the planner entries to local storage when the save button is clicked
 function savePlannerEntries() {
@@ -24,24 +25,23 @@ function savePlannerEntries() {
 //}
 
 // Make it loop through the time divs variable to check whether the listed times are in the past, present of future
-for (var i = 0; i < plannerEntry.length; i++) {
-  if (plannerEntry[i].dataset.time < timeNow) {
-    plannerEntry[i].classList.remove("future");
-    plannerEntry[i].classList.remove("present");
-    plannerEntry[i].classList.add("past");
+for (var i = 0; i < timeSegment.length; i++) {
+  if (timeSegment[i].dataset.time < timeNow) {
+    timeSegment[i].classList.remove("future");
+    timeSegment[i].classList.remove("present");
+    timeSegment[i].classList.add("past");
   }
 
-  if (plannerEntry[i].dataset.time == timeNow) {
-    plannerEntry[i].classList.remove("past");
-    plannerEntry[i].classList.remove("future");
-    plannerEntry[i].classList.add("present");
+  if (timeSegment[i].dataset.time == timeNow) {
+    timeSegment[i].classList.remove("past");
+    timeSegment[i].classList.remove("future");
+    timeSegment[i].classList.add("present");
   }
-  if (plannerEntry[i].dataset.time > timeNow) {
-    plannerEntry[i].classList.remove("past");
-    plannerEntry[i].classList.remove("present");
-    plannerEntry[i].classList.add("future");
+  if (timeSegment[i].dataset.time > timeNow) {
+    timeSegment[i].classList.remove("past");
+    timeSegment[i].classList.remove("present");
+    timeSegment[i].classList.add("future");
   }
 }
 // ***** DON'T FORGET TO CALL FUNCTIONS!!!!*******
-savePlannerEntries();
 //protectSavedEntry();
