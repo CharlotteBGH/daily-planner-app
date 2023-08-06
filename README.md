@@ -24,6 +24,10 @@ View the deployed application here: https://charlottebgh.github.io/daily-planner
 
 To try out the planner for yourself, just click on a timeblock to enter a plan and click the save icon. You can also view the current date and the colours to indicate if your entry is in the past, present or future. Refresh the page to make sure your entries are saved.
 
+## Collaboration 
+
+Tudor (instructor) helped me to restore this repository as I had accidentally deleted my files. 
+
 ## License
 
 MIT. Please see original GitHub repository.
